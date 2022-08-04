@@ -8,6 +8,7 @@ struct SDL_Window;
 
 namespace wrap
 {
+	class Transform;
 	class Renderer
 	{
 	public:
@@ -22,7 +23,9 @@ namespace wrap
 		void EndFrame();
 		void SetClearColor(Color color) { m_clearColor = color; }
 
-		void Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle = 0);
+		void Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle = 0, const Vector2& scale = Vector2{1, 1}, const Vector2& registration = Vector2{.5f,.5f});
+		void Draw(std::shared_ptr<Texture> texture, const Transform& transform, const Vector2& registration = Vector2{ .5f,.5f });
+		
 		void DrawLine(float x1, float y1, float x2, float y2);
 		void DrawLine(Vector2& v1, Vector2& v2, const Color& color);
 		void DrawPoint(float x, float y);

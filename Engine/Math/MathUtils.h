@@ -2,9 +2,9 @@
 
 namespace math
 {
-	const float Pi = 3.14159265359f;
-	const float TwoPi = 6.28318530718f;
-	const float HalfPi = 1.57079632679f;
+	constexpr float Pi = 3.14159265359f;
+	constexpr float TwoPi = 6.28318530718f;
+	constexpr float HalfPi = 1.57079632679f;
 
 	inline float DegToRad(float degrees)
 	{

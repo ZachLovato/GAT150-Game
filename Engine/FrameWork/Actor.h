@@ -18,7 +18,7 @@ namespace wrap
 		virtual void Draw(Renderer& renderer);
 
 		virtual void OnCollision(Actor* other) {}
-		float GetRadius() { return m_model.GetRadius() * m_transform.scale; }
+		float GetRadius() { return m_model.GetRadius() * std::max( m_transform.scale.x, m_transform.scale.y); }
 		std::string& GetTag() { return m_tag; }
 
 		friend class Scene;
