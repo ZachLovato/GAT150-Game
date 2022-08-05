@@ -27,6 +27,9 @@
     <Filter Include="Source\Audio">
       <UniqueIdentifier>{3b2dfc23-8ebb-4f64-afd2-0c81b7f57a75}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Components">
+      <UniqueIdentifier>{99609e60-0cac-429c-b05f-8a5aa2476a88}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\MathUtils.cpp">
@@ -79,6 +82,12 @@
     </ClCompile>
     <ClCompile Include="Math\Color.cpp">
       <Filter>Source\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\PlayerComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\SpriteComponent.cpp">
+      <Filter>Source\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +153,18 @@
     </ClInclude>
     <ClInclude Include="Core\Logger.h">
       <Filter>Source\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameWork\Component.h">
+      <Filter>Source\FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\PlayerComponent.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\RenderComponent.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\SpriteComponent.h">
+      <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

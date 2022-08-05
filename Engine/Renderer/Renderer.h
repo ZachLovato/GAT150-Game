@@ -8,7 +8,7 @@ struct SDL_Window;
 
 namespace wrap
 {
-	class Transform;
+	struct Transform;
 	class Renderer
 	{
 	public:

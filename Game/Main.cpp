@@ -1,23 +1,8 @@
 #include "Engine.h"
 #include <iostream>
 
-int add(int a, int b)
-{
-	return a + b;
-}
-
-constexpr int add_c(int a, int b)
-{
-	return a + b;
-}
 
 int main() {
-	constexpr int i = 5;
-
-	int i2 = add(6, 7);
-	int i3 = add_c(6, 7);
-
-	float degrees = math::RadToDeg(math::Pi);
 
 	
 	wrap::InitializeMemory();
@@ -27,12 +12,26 @@ int main() {
 
 	wrap::SetFilePath("../Assets");
 
+	//create window
 	wrap::g_renderer.CreateWindow("Game", 800, 600);
 	wrap::g_renderer.SetClearColor(wrap::Color{ 0,0,0,0 });
-
-	
+		
 	std::shared_ptr<wrap::Texture> texture = std::make_shared<wrap::Texture>();
-	texture->Create(wrap::g_renderer, "Orber.png");
+	texture->Create(wrap::g_renderer, "POWER.png");
+
+	//create Actors
+	wrap::Scene scene;
+	
+	wrap::Transform transform{ { 100, 100}, 90, { 3 , 3 } };
+	std::unique_ptr<wrap::Actor> actor = std::make_unique<wrap::Actor>();
+	std::unique_ptr<wrap::PlayerComponent> pcomponent = std::make_unique<wrap::PlayerComponent>();
+	actor->AddComponent(std::move(pcomponent));
+
+	std::unique_ptr<wrap::SpriteComponent> sprcomponent = std::make_unique<wrap::SpriteComponent>();
+	sprcomponent->m_texture = texture;
+	actor->AddComponent(std::move(sprcomponent));
+
+	scene.Add(std::move(actor));
 
 	float angle = 0;
 
@@ -46,11 +45,14 @@ int main() {
 
 		if (wrap::g_inputSystem.GetKeyState(wrap::key_escape) == wrap::InputSystem::KeyState::Pressed) quit = true;
 		
+		//update Scene
 		angle += 720.0f * wrap::g_time.deltaTime;
+		scene.Update();
 
 		wrap::g_renderer.BeginFrame();
 
-		wrap::g_renderer.Draw(texture, { 400, 300 }, angle, {5.0f , 5.0f}, {0.5f, 1.0f});
+		scene.Draw(wrap::g_renderer);
+		wrap::g_renderer.Draw(texture, { 400, 300 }, angle, { 5.0f , 5.0f }, { .5f ,1.0f });//.5 1
 
 		wrap::g_renderer.EndFrame();
 	}
