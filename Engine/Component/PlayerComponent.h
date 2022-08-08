@@ -10,7 +10,8 @@ namespace wrap
 
 		void Update() override;
 
-
+	private:
+		float m_speed = 200.0f;
 
 	};
 }

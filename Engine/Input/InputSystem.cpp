@@ -11,8 +11,9 @@ namespace wrap {
 	const uint32_t key_escape = SDL_SCANCODE_ESCAPE;
 	const uint32_t key_w = SDL_SCANCODE_W;
 	const uint32_t key_a = SDL_SCANCODE_A;
-	const uint32_t key_s = SDL_SCANCODE_D;
+	const uint32_t key_d = SDL_SCANCODE_D;
 	const uint32_t key_r = SDL_SCANCODE_R;
+	const uint32_t key_s = SDL_SCANCODE_S;
 	const uint32_t key_1 = SDL_SCANCODE_1;
 	const uint32_t key_2 = SDL_SCANCODE_2;
 	const uint32_t key_3 = SDL_SCANCODE_3;

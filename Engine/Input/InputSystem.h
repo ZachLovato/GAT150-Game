@@ -57,6 +57,7 @@ namespace wrap
 	extern const uint32_t key_w;
 	extern const uint32_t key_a;
 	extern const uint32_t key_r;                                                              
+	extern const uint32_t key_d;                                                              
 	extern const uint32_t key_s;
 	extern const uint32_t key_1;
 	extern const uint32_t key_2;

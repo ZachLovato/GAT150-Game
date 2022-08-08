@@ -10,7 +10,6 @@ namespace wrap
 		
 		virtual void Update() = 0;
 		
-	
-		//Transform m_transform;
+		Transform m_transform;
 	};
 }
