@@ -16,6 +16,9 @@ namespace wrap
 
 		void set(float x, float y) { this->x = x; this->y = y; }
 
+		float operator [] (size_t index) const { return (&x)[index]; }
+		float& operator [] (size_t index) { return (&x)[index]; }
+
 		//arithmetic operator
 		// Vector2 = Vector2 + Vector2
 		Vector2 operator + (const Vector2& v) const { return Vector2{ this->x + v.x, this->y + v.y }; }
@@ -76,7 +79,7 @@ namespace wrap
 		// functions
 		inline float Vector2::LengthSqr() { return x * x + y * y; }
 
-		inline float Vector2::Length() { return std::sqrt(x * x + y + y); }
+		inline float Vector2::Length() { return std::sqrt(x * x + y * y); }
 
 		inline float Vector2::DistanceSqr(const Vector2& v)
 		{

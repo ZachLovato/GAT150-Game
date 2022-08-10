@@ -3,7 +3,6 @@
 
 
 int main() {
-
 	
 	wrap::InitializeMemory();
 	wrap::g_inputSystem.Initialize();
