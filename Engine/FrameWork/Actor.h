@@ -10,7 +10,7 @@ namespace wrap
 	class Component;
 	class Renderer;
 
-	class Actor : public GameObjects
+	class Actor : public GameObject
 	{
 	public:
 		Actor() = default;
@@ -19,6 +19,7 @@ namespace wrap
 		virtual void Update() override;
 		virtual void Draw(Renderer& renderer);
 
+		void AddChild(std::unique_ptr<Actor> child);
 		void AddComponent(std::unique_ptr<Component> compone);
 		template<typename T>
 		T* GetComponent();
@@ -31,6 +32,7 @@ namespace wrap
 		friend class Scene;
 		Transform m_transform;
 
+
 	protected:
 		std::string m_tag;
 		bool m_destroy = false;
@@ -41,7 +43,9 @@ namespace wrap
 
 		Scene* m_scene = nullptr;
 
+		Actor* m_parent = nullptr;
 		std::vector<std::unique_ptr <Component>> m_componets;
+		std::vector<std::unique_ptr <Actor>> m_children;
 
 	};
 

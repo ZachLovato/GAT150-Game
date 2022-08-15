@@ -1,12 +1,14 @@
 #pragma once
 #include "../Math/Transform.h"
 
+#define REGISTER_CLASS(class) Factory::Instance().Register<class>(#class)
+
 namespace wrap
 {
-	class GameObjects
+	class GameObject
 	{
 	public:
-		GameObjects() = default;
+		GameObject() = default;
 		
 		virtual void Update() = 0;
 		

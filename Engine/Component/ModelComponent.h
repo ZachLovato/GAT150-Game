@@ -1,18 +1,19 @@
 #pragma once
+
 #include "Component/RenderComponent.h"
 
 namespace wrap
 {
-	class Texture;
+	class Model;
 
-	class SpriteComponent : public RenderComponent
+	class ModelComponent : public RenderComponent
 	{
 	public:
 		virtual void Update() override;
 		virtual void Draw(Renderer& renderer) override;
 
-	//shared texture to a model in a model comonent
-		std::shared_ptr<Texture> m_texture;
+		//shared texture to a model in a model comonent
+		std::shared_ptr<Model> m_model;
 	protected:
 
 	};

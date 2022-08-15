@@ -50,7 +50,8 @@ namespace wrap
 		//conparision
 		//Vector3 == Vectoer2 
 		bool operator == (const Vector3& v) const { return (this->x == v.x && this->y == v.y && this->z == v.z); }
-		bool operator != (const Vector3& v) const { return (this->x != v.x && this->y != v.y && this->z != v.z); }
+		bool operator != (const Vector3& v) const { return (*(this) != v) ; }
+			//this->x != v.x && this->y != v.y && this->z != v.z); }
 
 		float LengthSqr();
 		float Length();

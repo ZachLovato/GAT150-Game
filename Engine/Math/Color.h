@@ -21,6 +21,6 @@ namespace wrap
 
 	};
 
-	inline std::istream& operator >> (std::istream& stream, Color& c);
+	std::istream& operator >> (std::istream& stream, Color& c);
 
 }

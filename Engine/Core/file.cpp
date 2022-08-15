@@ -1,4 +1,5 @@
 #include "file.h"
+#include "Logger.h"
 #include <filesystem>
 #include <fstream>
 
@@ -28,7 +29,11 @@ namespace wrap
 
 	bool ReadFile(const std::string& pathname, std::string& buffer)
 	{
-		if (!FileExists(pathname)) return false;
+		if (!FileExists(pathname))
+		{
+			LOG("ERROR Could Not Read File %s", pathname.c_str());
+			return false;
+		}
 
 		// get file size and set buffer size
 		size_t size;
@@ -39,7 +44,7 @@ namespace wrap
 		fstream.read(buffer.data(), size);
 		fstream.close();
 
-		return false;
+		return true;
 	}
 
 }

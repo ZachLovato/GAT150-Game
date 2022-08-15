@@ -5,7 +5,7 @@ namespace wrap
 {
 	class Actor;
 
-	class Component : public GameObjects
+	class Component : public GameObject
 	{
 	public:
 		Component() = default;

@@ -30,6 +30,9 @@
     <Filter Include="Source\Component">
       <UniqueIdentifier>{99609e60-0cac-429c-b05f-8a5aa2476a88}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Resource">
+      <UniqueIdentifier>{abd49844-b214-44b4-af51-b93419023431}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\MathUtils.cpp">
@@ -89,14 +92,23 @@
     <ClCompile Include="Component\SpriteComponent.cpp">
       <Filter>Source\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Components\PhysicsComponent.cpp">
-      <Filter>Source\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\AudioComponent.cpp">
-      <Filter>Source\Component</Filter>
-    </ClCompile>
     <ClCompile Include="Math\Matrix2x2.cpp">
       <Filter>Source\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Matrix3x3.cpp">
+      <Filter>Source\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\ModelComponent.cpp">
+      <Filter>Source\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\ResourceManager.cpp">
+      <Filter>Source\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\AudioComponent.cpp">
+      <Filter>Source\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\PhysicsComponent.cpp">
+      <Filter>Source\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -175,17 +187,35 @@
     <ClInclude Include="Component\SpriteComponent.h">
       <Filter>Source\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Components\AudioComponent.h">
-      <Filter>Source\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\PhysicsComponent.h">
-      <Filter>Source\Component</Filter>
-    </ClInclude>
     <ClInclude Include="Math\Matrix2x2.h">
       <Filter>Source\Math</Filter>
     </ClInclude>
     <ClInclude Include="Math\Vector3.h">
       <Filter>Source\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Matrix3x3.h">
+      <Filter>Source\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\ModelComponent.h">
+      <Filter>Source\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\Resource.h">
+      <Filter>Source\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\ResourceManager.h">
+      <Filter>Source\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\AudioComponent.h">
+      <Filter>Source\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\PhysicsComponent.h">
+      <Filter>Source\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameWork\SimpleTon.h">
+      <Filter>Source\FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameWork\Factory.h">
+      <Filter>Source\FrameWork</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
