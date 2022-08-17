@@ -12,22 +12,13 @@ namespace wrap
         if (m_texture) SDL_DestroyTexture(m_texture);
     }
 
-    bool Texture::Create(const std::string& filename, void* data) //  replace
-    {
-        //check data is not null
-
-        Renderer* renderer = static_cast<Renderer*>(data);
-
-        return Create(*renderer, filename);
-    }
-
-    bool Texture::Create(std::string filename, ...)
+    bool Texture::Create(std::string name, ...)
     {
         // va_list - type to hold information about variable arguments 
         va_list args;
 
         // va_start - enables access to variadic function arguments 
-        va_start(args, filename);
+        va_start(args, name);
 
         // va_arg - accesses the next variadic function arguments 
         Renderer& renderer = va_arg(args, Renderer);
@@ -36,7 +27,7 @@ namespace wrap
         va_end(args);
 
         // create texture (returns true/false if successful) 
-        return Create(renderer, filename);
+        return Create(renderer, name);
     }
 
     bool Texture::Create(Renderer& renderer, const std::string& filename)

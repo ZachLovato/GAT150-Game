@@ -13,7 +13,7 @@ namespace wrap
 		Font(const std::string& filename, int fontSize);
 		~Font();
 
-		bool Create(const std::string filename, void* data = nullptr) { return false; }
+		bool Create(std::string name, ...) override { return false; }
 		void Load(const std::string& filename, int fontSize);
 
 	private:

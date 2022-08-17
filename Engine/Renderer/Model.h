@@ -16,7 +16,7 @@ namespace wrap
 
 		Model(const std::string& filename);
 
-		bool Create(const std::string& filename, void* data = nullptr) override;
+		bool Create(std::string filename, ...) override;
 
 
 		void Draw(Renderer& renderer, const Vector2& position, float angle, const Vector2& scale);

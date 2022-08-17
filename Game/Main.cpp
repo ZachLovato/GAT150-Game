@@ -13,64 +13,45 @@ int main() {
 
 	wrap::SetFilePath("../Assets");
 
+	rapidjson::Document document;
+	bool success = wrap::json::Load("json.txt", document);
+	assert(success);
+
+	std::string str;
+	wrap::json::Get(document, "string", str);
+	std::cout << str << std::endl;
+
+	bool b;
+	wrap::json::Get(document, "boolean", b);
+	std::cout << b << std::endl;
+
+	int i1;
+	wrap::json::Get(document, "integer1", i1);
+	std::cout << i1 << std::endl;
+
+	int i2;
+	wrap::json::Get(document, "integer2", i2);
+	std::cout << i2 << std::endl;
+
+	float f;
+	wrap::json::Get(document, "float", f);
+	std::cout << f << std::endl;
+
+	wrap::Vector2 v2;
+	wrap::json::Get(document, "vector2", v2);
+	std::cout << v2 << std::endl;
+
+	wrap::Color color;
+	wrap::json::Get(document, "color", color);
+	std::cout << color << std::endl;
+
+
 	//create window
 	wrap::g_renderer.CreateWindow("Game", 800, 600);
 	wrap::g_renderer.SetClearColor(wrap::Color{ 0 , 0 , 0 , 0 });
-		
-	//resources
-	std::shared_ptr<wrap::Texture> texture = std::make_shared<wrap::Texture>();
-	texture->Create(wrap::g_renderer, "Sprites/Orber.png");
-
-	wrap::g_audio.AddAudio("bg", "rocket.wav");
-
-	//std::shared_ptr<wrap::Model> model = std::make_shared<wrap::Model>();
-	//model->Create("Sprites/Player.txt");
-
-	
-	std::shared_ptr<wrap::Model> model2 = wrap::g_resources.Get<wrap::Model>("Player.txt");
 
 	//create Actors
 	wrap::Scene scene;
-
-	wrap::Transform transform{ wrap::Vector2{ 400 , 300 }, 90, { 3 , 3 } };
-	//std::unique_ptr<wrap::Actor> actor = std::make_unique<wrap::Actor>();
-	std::unique_ptr<wrap::Actor> actor = wrap::Factory::Instance().Create<wrap::Actor>("Actor");
-	actor->m_transform = transform;
-
-	std::unique_ptr<wrap::Component> pcomponent = wrap::Factory::Instance().Create<wrap::PlayerComponent>("PlayerComponent");
-	actor->AddComponent(std::move(pcomponent));
-
-
-	std::unique_ptr<wrap::ModelComponent> mcomponent = std::make_unique<wrap::ModelComponent>();
-	mcomponent->m_model = model2;
-	actor->AddComponent(std::move(mcomponent));
-
-	//std::unique_ptr<wrap::SpriteComponent> sprcomponent = std::make_unique<wrap::SpriteComponent>();
-	//std::shared_ptr<wrap::Texture> texture = wrap::g_resources.Get<wrap::Texture>("name", wrap::g_renderer);
-	//sprcomponent->m_texture = texture;
-	//actor->AddComponent(std::move(sprcomponent));
-
-
-	std::unique_ptr<wrap::AudioComponent> acomponent = std::make_unique<wrap::AudioComponent>();
-	acomponent->m_soundName = "bg";
-	actor->AddComponent(std::move(acomponent));
-
-	std::unique_ptr<wrap::Component> phcomponent = wrap::Factory::Instance().Create<wrap::Component>("PhysicsComponent");
-	actor->AddComponent(std::move(phcomponent));
-
-
-	//Child Actor
-	wrap::Transform transformC{ wrap::Vector2{10,10}, 0, {1,1} };
-	std::unique_ptr<wrap::Actor> child = std::make_unique<wrap::Actor>(transformC);
-
-	std::unique_ptr<wrap::ModelComponent> mccomponent = std::make_unique<wrap::ModelComponent>();
-	mccomponent->m_model = model2;
-	child->AddComponent(std::move(mccomponent));
-
-	actor->AddChild(std::move(child));
-
-	//actor
-	scene.Add(std::move(actor));
 
 	float angle = 0;
 

@@ -43,7 +43,6 @@ namespace wrap
 		if (m_sounds.find(name) == m_sounds.end())// !! use find() on m_sounds to see if element exists, only set sound if it does not 
 		{
 			FMOD::Sound* sound = nullptr;
-			std::cout << sound;
 			m_fmodSystem->createSound(filename.c_str(), FMOD_DEFAULT, 0, &sound);
 
 			if (sound == nullptr)

@@ -19,8 +19,12 @@ namespace wrap
 		static const Color blue;
 		static const Color teal;
 
+		u8_t operator [] (size_t index) const { return (&r)[index]; }
+		u8_t& operator [] (size_t index) { return (&r)[index]; }
+
 	};
 
 	std::istream& operator >> (std::istream& stream, Color& c);
+	std::ostream& operator << (std::ostream& stream, const Color& color);
 
 }
