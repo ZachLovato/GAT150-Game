@@ -1,14 +1,16 @@
 #pragma once
 #include "../Math/Vector2.h"
 #include "../Math/Color.h"
-#include "Texture.h"
 
 struct SDL_Renderer;
 struct SDL_Window;
 
 namespace wrap
 {
+	class Texture;
 	struct Transform;
+	struct Rect;
+
 	class Renderer
 	{
 	public:
@@ -25,6 +27,7 @@ namespace wrap
 
 		void Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle = 0, const Vector2& scale = Vector2{1, 1}, const Vector2& registration = Vector2{.5f,.5f});
 		void Draw(std::shared_ptr<Texture> texture, const Transform& transform, const Vector2& registration = Vector2{ .5f,.5f });
+		void Draw(std::shared_ptr<Texture> texture, const Rect& source, const Transform& transform, const Vector2& registration = Vector2{ .5f,.5f });
 		
 		void DrawLine(float x1, float y1, float x2, float y2);
 		void DrawLine(Vector2& v1, Vector2& v2, const Color& color);

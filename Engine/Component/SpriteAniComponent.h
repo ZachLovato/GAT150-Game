@@ -6,7 +6,7 @@ namespace wrap
 {
 	class Texture;
 
-	class SpriteComponent : public RenderComponent
+	class SpriteAniComponent : public RenderComponent
 	{
 	public:
 		virtual void Update() override;
@@ -14,15 +14,22 @@ namespace wrap
 
 		// Inherited via RenderComponent
 		virtual bool Write(const rapidjson::Value& value) const override;
-
 		virtual bool Read(const rapidjson::Value& value) override;
-	
-		//shared texture to a model in a model comonent
-		std::shared_ptr<Texture> m_texture;
-	
-		Rect source;
-		//std::shared_ptr<Texture> m_texture;
 
+		// json animation values
+		float fps = 0.0f;
+		int num_colums = 0;
+		int num_rows = 0;
+
+		int start_frame = 0;
+		int end_frame = 0;
+		
+		int frame = 0;
+		float frameTimer = 0;
+
+
+		Rect source;
+		std::shared_ptr<Texture> m_texture;
 
 	};
 }

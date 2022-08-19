@@ -10,8 +10,17 @@ namespace wrap
 
 		void Update() override;
 
+		// Inherited via Component
+		virtual bool Write(const rapidjson::Value& value) const override;
+
+		virtual bool Read(const rapidjson::Value& value) override;
+	
+
+
+		float speed = 0.0f;
 	private:
-		float m_speed = 200.0f;
+
+
 
 	};
 }

@@ -10,7 +10,7 @@ namespace wrap
 	class Renderer;
 	class Game;
 
-	class Scene
+	class Scene : public ISerializable
 	{
 	public:
 		Scene() = default;
@@ -25,11 +25,19 @@ namespace wrap
 		template<typename T>
 		T* GetActor();
 
+		// Inherited via ISerializable
+		virtual bool Write(const rapidjson::Value& value) const override;
+
+		virtual bool Read(const rapidjson::Value& value) override;
+		
 		Game* GetGame() { return m_game; }
 
 	private:
 		Game* m_game = nullptr;
 		std::list<std::unique_ptr<Actor>> m_actors;
+
+
+
 
 	};
 

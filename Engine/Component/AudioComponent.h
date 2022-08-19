@@ -19,8 +19,14 @@ namespace wrap
 		float m_volume = 0.5f;
 		float m_pitch = 0.5f;
 
+		// Inherited via Component
+		virtual bool Write(const rapidjson::Value& value) const override;
+
+		virtual bool Read(const rapidjson::Value& value) override;
 
 	private:
+
+
 
 	};
 }

@@ -16,9 +16,11 @@
 
 #include "Component/PlayerComponent.h"
 #include "Component/SpriteComponent.h"
+#include "Component/SpriteAniComponent.h"
 #include "Component/AudioComponent.h"
 #include "Component/PhysicsComponent.h"
 #include "Component/ModelComponent.h"
+
 
 #include "Input/InputSystem.h"
 #include "Audio/AudioSystem.h"

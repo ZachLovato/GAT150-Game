@@ -160,6 +160,8 @@
     <ClCompile Include="Component\ModelComponent.cpp" />
     <ClCompile Include="Component\PhysicsComponent.cpp" />
     <ClCompile Include="Component\PlayerComponent.cpp" />
+    <ClCompile Include="Component\RenderComponent.cpp" />
+    <ClCompile Include="Component\SpriteAniComponent.cpp" />
     <ClCompile Include="Component\SpriteComponent.cpp" />
     <ClCompile Include="Core\file.cpp" />
     <ClCompile Include="Core\Logger.cpp" />
@@ -173,6 +175,7 @@
     <ClCompile Include="Math\MathUtils.cpp" />
     <ClCompile Include="Math\Matrix2x2.cpp" />
     <ClCompile Include="Math\Matrix3x3.cpp" />
+    <ClCompile Include="Math\Transform.cpp" />
     <ClCompile Include="Math\Vector2.cpp" />
     <ClCompile Include="Renderer\Font.cpp" />
     <ClCompile Include="Renderer\Model.cpp" />
@@ -189,6 +192,7 @@
     <ClInclude Include="Component\PhysicsComponent.h" />
     <ClInclude Include="Component\PlayerComponent.h" />
     <ClInclude Include="Component\RenderComponent.h" />
+    <ClInclude Include="Component\SpriteAniComponent.h" />
     <ClInclude Include="Component\SpriteComponent.h" />
     <ClInclude Include="Core\file.h" />
     <ClInclude Include="Core\Logger.h" />
@@ -208,6 +212,7 @@
     <ClInclude Include="Math\Matrix2x2.h" />
     <ClInclude Include="Math\Matrix3x3.h" />
     <ClInclude Include="math\Random.h" />
+    <ClInclude Include="Math\Rect.h" />
     <ClInclude Include="Math\Transform.h" />
     <ClInclude Include="Math\Vector2.h" />
     <ClInclude Include="Math\Vector3.h" />
@@ -218,7 +223,7 @@
     <ClInclude Include="Renderer\Texture.h" />
     <ClInclude Include="Resource\Resource.h" />
     <ClInclude Include="Resource\ResourceManager.h" />
-    <ClInclude Include="Serialization\ISerializable.h" />
+    <ClInclude Include="Serialization\Serializable.h" />
     <ClInclude Include="Serialization\Json.h" />
   </ItemGroup>
   <ItemGroup>

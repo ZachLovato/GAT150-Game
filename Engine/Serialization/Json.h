@@ -2,14 +2,15 @@
 #include "rapidjson/document.h"
 #include <string>
 
+#define READ_DATA(value, data) wrap::json::Get(value, #data, data)
+
+
 namespace wrap
 {
 	struct Vector2;
 	struct Color;
-}
+	struct Rect;
 
-namespace wrap
-{
 	namespace json
 	{
 	bool Load(const std::string& filename, rapidjson::Document& document);
@@ -20,5 +21,6 @@ namespace wrap
 	bool Get(const rapidjson::Value& value, const std::string& name, std::string& data);
 	bool Get(const rapidjson::Value& value, const std::string& name, Vector2& data);
 	bool Get(const rapidjson::Value& value, const std::string& name, Color& data);
+	bool Get(const rapidjson::Value& value, const std::string& name, Rect& data);
 	}
 }

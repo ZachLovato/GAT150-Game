@@ -24,12 +24,12 @@ namespace wrap
 			//std::cout << "right\n";
 		}
 
-		float thrust = 0;
+		float thrust = 50;
 		if (wrap::g_inputSystem.GetKeyState(wrap::key_up) == wrap::InputSystem::KeyState::Held
 			|| wrap::g_inputSystem.GetKeyState(wrap::key_w) == wrap::InputSystem::KeyState::Held
 			)
 		{
-			thrust = 500;
+			thrust = speed;
 			//std::cout << "up\n";
 		}
 
@@ -41,8 +41,8 @@ namespace wrap
 			component->ApplyForce(force);
 
 			//grav force
-			force = (Vector2{ 400,300 } - m_owner->m_transform.position).Normalized() * 50.0f;
-			component->ApplyForce(force);
+			//force = (Vector2{ 400,300 } - m_owner->m_transform.position).Normalized() * 50.0f;
+			//component->ApplyForce(force);
 		}
 
 		//m_owner->m_transform += direction * 300 * g_time.deltaTime;
@@ -56,6 +56,19 @@ namespace wrap
 			}
 		}
 
+	}
+
+	bool PlayerComponent::Write(const rapidjson::Value& value) const
+	{
+		return true;
+	}
+
+	bool PlayerComponent::Read(const rapidjson::Value& value)
+	{
+		READ_DATA(value, speed);
+
+
+		return true;
 	}
 
 }
