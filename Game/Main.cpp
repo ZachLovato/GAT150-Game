@@ -8,6 +8,7 @@ int main() {
 	wrap::g_renderer.Initailized();
 	wrap::g_audio.Initialize();
 	wrap::g_resources.Initialize();
+	wrap::g_physicsSystem.Initialize();
 
 	wrap::Engine::Instance().Register();
 
@@ -42,6 +43,7 @@ int main() {
 		scene.Update();
 
 		wrap::g_renderer.BeginFrame();
+		wrap::g_physicsSystem.Update();
 
 		scene.Draw(wrap::g_renderer);
 

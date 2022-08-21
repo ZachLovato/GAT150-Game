@@ -7,6 +7,7 @@ namespace wrap
 	Time g_time;
 	AudioSystem g_audio;
 	ResourceManager g_resources;
+	PhysicsSystem g_physicsSystem;
 
 	void Engine::Register()
 	{

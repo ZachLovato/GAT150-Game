@@ -21,7 +21,6 @@
 #include "Component/PhysicsComponent.h"
 #include "Component/ModelComponent.h"
 
-
 #include "Input/InputSystem.h"
 #include "Audio/AudioSystem.h"
 #include "Resource/ResourceManager.h"
@@ -31,6 +30,8 @@
 #include "Renderer/Text.h"
 #include "Renderer/Texture.h"
 #include "Renderer/Model.h"
+
+#include "Physics/PhysicsSystem.h"
 
 #include <memory>
 #include <list>
@@ -43,6 +44,7 @@ namespace wrap
 	extern Time g_time;
 	extern AudioSystem g_audio;
 	extern ResourceManager g_resources;
+	extern PhysicsSystem g_physicsSystem;
 
 	class Engine : public Singleton<Engine>
 	{
