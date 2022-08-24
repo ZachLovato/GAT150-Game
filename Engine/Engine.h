@@ -15,10 +15,12 @@
 #include "FrameWork/SimpleTon.h"
 
 #include "Component/PlayerComponent.h"
+#include "Component/CollisionComponent.h"
 #include "Component/SpriteComponent.h"
 #include "Component/SpriteAniComponent.h"
 #include "Component/AudioComponent.h"
 #include "Component/PhysicsComponent.h"
+#include "Component/RBPhysicsComponent.h"
 #include "Component/ModelComponent.h"
 
 #include "Input/InputSystem.h"

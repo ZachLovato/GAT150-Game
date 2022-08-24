@@ -8,11 +8,12 @@ namespace wrap
 	void wrap::PlayerComponent::Update()
 	{
 		Vector2 direction = Vector2::zero;
+
 		if (wrap::g_inputSystem.GetKeyState(wrap::key_left) == wrap::InputSystem::KeyState::Held
 			|| wrap::g_inputSystem.GetKeyState(wrap::key_a) == wrap::InputSystem::KeyState::Held
 			)
 		{
-			m_owner->m_transform.rotation -= 200 * g_time.deltaTime;
+			direction = Vector2::left;
 			//std::cout << "left\n";
 		}
 		
@@ -20,16 +21,22 @@ namespace wrap
 			|| wrap::g_inputSystem.GetKeyState(wrap::key_d) == wrap::InputSystem::KeyState::Held
 			)
 		{
-			m_owner->m_transform.rotation += 200 * g_time.deltaTime;
+			direction = Vector2::right;
 			//std::cout << "right\n";
 		}
 
-		float thrust = 50;
-		if (wrap::g_inputSystem.GetKeyState(wrap::key_up) == wrap::InputSystem::KeyState::Held
-			|| wrap::g_inputSystem.GetKeyState(wrap::key_w) == wrap::InputSystem::KeyState::Held
+		//float thrust = 0;
+		if (wrap::g_inputSystem.GetKeyState(wrap::key_up) == wrap::InputSystem::KeyState::Pressed
+			|| wrap::g_inputSystem.GetKeyState(wrap::key_w) == wrap::InputSystem::KeyState::Pressed
 			)
 		{
-			thrust = speed;
+			auto component = m_owner->GetComponent<PhysicsComponent>(); // jump
+			if (component)
+			{
+				component->ApplyForce(Vector2::up * 600);
+			}
+
+			//thrust = speed;
 			//std::cout << "up\n";
 		}
 
@@ -37,8 +44,8 @@ namespace wrap
 		if (component)
 		{
 			//thrust force
-			Vector2 force = Vector2::Rotate({ 1, 0 }, math::DegToRad(m_owner->m_transform.rotation)) * thrust;
-			component->ApplyForce(force);
+			//Vector2 force = Vector2::Rotate({ 1, 0 }, math::DegToRad(m_owner->m_transform.rotation)) * thrust;
+			component->ApplyForce(direction * speed);
 
 			//grav force
 			//force = (Vector2{ 400,300 } - m_owner->m_transform.position).Normalized() * 50.0f;
@@ -49,11 +56,17 @@ namespace wrap
 
 		if (g_inputSystem.GetKeyState(key_space) == InputSystem::KeyState::Pressed)
 		{
-			auto component = m_owner->GetComponent<AudioComponent>();
+			auto component = m_owner->GetComponent<PhysicsComponent>();
+			if (component)
+			{
+				component->ApplyForce(Vector2::up * 30);
+			}
+
+			/*auto component = m_owner->GetComponent<AudioComponent>();
 			if (component)
 			{
 				component->Play();
-			}
+			}*/
 		}
 
 	}

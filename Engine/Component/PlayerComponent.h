@@ -1,4 +1,4 @@
-#pragma once
+	#pragma once
 #include "FrameWork/Component.h"
 
 namespace wrap

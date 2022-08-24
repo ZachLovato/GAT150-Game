@@ -11,7 +11,9 @@ namespace wrap
 	public:
 		GameObject() = default;
 		
+		virtual void Initialize() {};
 		virtual void Update() = 0;
+
 		
 		Transform m_transform;
 	};

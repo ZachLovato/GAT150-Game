@@ -10,14 +10,15 @@ namespace wrap
 	class Renderer;
 	class Game;
 
-	class Scene : public ISerializable
+	class Scene : public GameObject, public ISerializable
 	{
 	public:
 		Scene() = default;
 		Scene(Game* game) : m_game{ game } {}
 		~Scene() = default;
 
-		void Update();
+		void Update() override;
+		void Initialize() override;
 		void Draw(Renderer& renderer );
 
 		void Add(std::unique_ptr<Actor> actor);

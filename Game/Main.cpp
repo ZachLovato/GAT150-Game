@@ -26,6 +26,7 @@ int main() {
 	//assert(success);
 
 	scene.Read(document);
+	scene.Initialize();
 
 	float angle = 0;
 
@@ -50,6 +51,9 @@ int main() {
 		wrap::g_renderer.EndFrame();
 	}
 
+	wrap::g_audio.Shutdown();
+	wrap::g_inputSystem.Shutdown();
+	wrap::g_physicsSystem.Shutdown();
 	wrap::g_renderer.Shutdown();
 	wrap::g_audio.Shutdown();
 }

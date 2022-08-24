@@ -16,6 +16,7 @@ namespace wrap
 		Actor() = default;
 		Actor(const Transform& transform) : m_transform{ transform } {}
 		
+		void Initialize() override;
 		virtual void Update() override;
 		virtual void Draw(Renderer& renderer);
 

@@ -12,6 +12,10 @@ namespace wrap
 		acceleration = Vector2::zero;
 	}
 
+	void PhysicsComponent::Initilize()
+	{
+	}
+
 	bool PhysicsComponent::Write(const rapidjson::Value& value) const
 	{
 		return true;
