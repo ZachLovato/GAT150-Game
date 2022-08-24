@@ -1,5 +1,17 @@
 {
    "actors":[
+   { 
+         "type":"Actor", 
+         "name":"Music", 
+         "components":[ 
+            { 
+               "type":"AudioComponent", 
+               "sound_name":"audio/boom.mp3", 
+               "loop":true, 
+               "play_on_start":true 
+            } 
+         ] 
+      }, 
       {
          "type":"Actor",
          "name":"Background",
@@ -51,6 +63,39 @@
       },
       {
          "type":"Actor",
+         "name":"Text",
+         "transform":{
+            "position":[
+               40,
+               30
+            ],
+            "scale":[
+               3,
+               3
+            ],
+            "rotation":0
+         },
+         "components":[
+            {
+               "type":"TextComponent",
+               "text":"Hello World!",
+               "font_name":"font/yorkwhiteletter.ttf",
+               "font_size":16,
+               "registration":[
+                  0.0,
+                  0.5
+               ],
+               "color":[
+                  255,
+                  255,
+                  0,
+                  255
+               ]
+            }
+         ]
+      },
+      {
+         "type":"Actor",
          "name":"Player",
          "tag":"Player",
          "transform":{
@@ -72,9 +117,8 @@
             {
                "type":"RBPhysicsComponent",
                "damping":0.99,
-               "data.gravity_scale":1
-               ,
-			   "data.constrain_angle":true
+               "data.gravity_scale":1,
+               "data.constrain_angle":true
             },
             {
                "type":"CollisionComponent",
@@ -91,6 +135,14 @@
                "num_rows":1,
                "start_frame":1,
                "end_frame":9
+            },
+            {
+               "type":"AudioComponent",
+               "sound_name":"Audio/pew.mp3",
+               "volume":1.0,
+               "pitch":1.0,
+               "loop":false,
+               "play_on_start":true
             }
          ]
       }

@@ -1,6 +1,8 @@
 #include "CollisionComponent.h"
 #include "Engine.h"
 
+#include <iostream>
+
 
 namespace wrap
 {
@@ -20,12 +22,12 @@ namespace wrap
 
     void CollisionComponent::OnCollisionEnter(Actor* other)
     {
-
+        if (m_enterFunction) m_enterFunction(other);
     }
 
     void CollisionComponent::OnCollisionExit(Actor* other)
     {
-
+        if (m_enterFunction) m_exitFunction(other);
     }
 
     bool CollisionComponent::Write(const rapidjson::Value& value) const

@@ -22,6 +22,7 @@
 #include "Component/PhysicsComponent.h"
 #include "Component/RBPhysicsComponent.h"
 #include "Component/ModelComponent.h"
+#include "Component/TextComponent.h"
 
 #include "Input/InputSystem.h"
 #include "Audio/AudioSystem.h"

@@ -79,7 +79,8 @@ namespace wrap
 		READ_DATA(value, tag);
 		READ_DATA(value, name);
 
-		m_transform.Read(value["transform"]);
+		if (value.HasMember("transform")) m_transform.Read(value["transform"]);
+
 		if (value.HasMember("components") && value["components"].IsArray())
 		{
 			for (auto& componentValue : value["components"].GetArray())

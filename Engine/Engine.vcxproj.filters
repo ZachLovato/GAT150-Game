@@ -137,6 +137,15 @@
     <ClCompile Include="Component\CollisionComponent.cpp">
       <Filter>Source\Component</Filter>
     </ClCompile>
+    <ClCompile Include="Audio\AudioChannel.cpp">
+      <Filter>Source\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\TextComponent.cpp">
+      <Filter>Source\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\ContactListener.cpp">
+      <Filter>Source\Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\MathUtils.h">
@@ -267,6 +276,15 @@
     </ClInclude>
     <ClInclude Include="Component\CollisionComponent.h">
       <Filter>Source\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio\AudioChannel.h">
+      <Filter>Source\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\TextComponent.h">
+      <Filter>Source\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\ContactListener.h">
+      <Filter>Source\Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
