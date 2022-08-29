@@ -16,7 +16,7 @@ namespace wrap
 		// !! if m_ttfFont not null, close font (TTF_CloseFont) 
 		if (m_ttfFont != nullptr) 
 		{
-			TTF_CloseFont(m_ttfFont);
+			//TTF_CloseFont(m_ttfFont);
 		}
 	}
 

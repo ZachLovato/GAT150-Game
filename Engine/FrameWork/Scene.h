@@ -15,18 +15,21 @@ namespace wrap
 	public:
 		Scene() = default;
 		Scene(Game* game) : m_game{ game } {}
-		~Scene() = default;
+		Scene(const Scene& other) {}
+		~Scene() = default; 
+
+		CLASS_DECLARATION(Scene)
 
 		void Update() override;
 		void Initialize() override;
 		void Draw(Renderer& renderer );
 
 		void Add(std::unique_ptr<Actor> actor);
+		void Removeall();
 
 		template<typename T>
 		T* GetActor();
 
-		// Inherited via ISerializable
 		virtual bool Write(const rapidjson::Value& value) const override;
 
 		virtual bool Read(const rapidjson::Value& value) override;

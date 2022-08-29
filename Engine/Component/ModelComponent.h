@@ -12,6 +12,9 @@ namespace wrap
 		virtual void Update() override;
 		virtual void Draw(Renderer& renderer) override;
 
+		CLASS_DECLARATION(ModelComponent)
+
+
 		//shared texture to a model in a model comonent
 		std::shared_ptr<Model> m_model;
 		

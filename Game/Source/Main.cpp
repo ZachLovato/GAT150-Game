@@ -1,4 +1,5 @@
 #include "Engine.h"
+#include "MyGame.h"
 #include <iostream>
 
 int main() {
@@ -19,14 +20,9 @@ int main() {
 	wrap::g_renderer.SetClearColor(wrap::Color{ 0 , 0 , 0 , 0 });
 
 	//create Scene
-	wrap::Scene scene;
-	
-	rapidjson::Document document;
-	bool success = wrap::json::Load("level.txt", document);
-	//assert(success);
+	std::unique_ptr<MyGame> game = std::make_unique<MyGame>();
 
-	scene.Read(document);
-	scene.Initialize();
+	game->Initialize();
 
 	float angle = 0;
 
@@ -36,20 +32,25 @@ int main() {
 		// update (engine)
 		wrap::g_time.Tick();
 		wrap::g_inputSystem.Update();
+		wrap::g_physicsSystem.Update();
 		wrap::g_audio.Update();
 
 		if (wrap::g_inputSystem.GetKeyState(wrap::key_escape) == wrap::InputSystem::KeyState::Pressed) quit = true;
 		
 		//update Scene
-		scene.Update();
+		game->Update();
 
 		wrap::g_renderer.BeginFrame();
-		wrap::g_physicsSystem.Update();
 
-		scene.Draw(wrap::g_renderer);
+		game->Draw(wrap::g_renderer);
 
 		wrap::g_renderer.EndFrame();
 	}
+
+	game->Shutdown();
+	game.reset();
+
+	wrap::Factory::Instance().Shutdown();
 
 	wrap::g_audio.Shutdown();
 	wrap::g_inputSystem.Shutdown();

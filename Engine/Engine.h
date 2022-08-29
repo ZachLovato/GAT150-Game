@@ -4,7 +4,8 @@
 
 #include "Core/file.h"
 #include "Core/Memory.h"
-#include "Core//Time.h"
+#include "Core/Time.h"
+#include "Core/Logger.h"
 
 #include "Math/MathUtils.h"
 #include "Math/Random.h"
@@ -23,6 +24,7 @@
 #include "Component/RBPhysicsComponent.h"
 #include "Component/ModelComponent.h"
 #include "Component/TextComponent.h"
+#include "Component/TilemapComponent.h"
 
 #include "Input/InputSystem.h"
 #include "Audio/AudioSystem.h"

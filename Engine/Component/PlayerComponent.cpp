@@ -97,6 +97,12 @@ namespace wrap
 	void PlayerComponent::OnCollisionEnter(Actor* other)
 	{
 		std::cout << "player enter\n";
+
+		if (other->GetName() == "Oil")
+		{
+			other->SetDestory();
+		}
+
 	}
 
 	void PlayerComponent::OnCollisionExit(Actor* other)

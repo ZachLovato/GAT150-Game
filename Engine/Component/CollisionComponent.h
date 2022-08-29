@@ -11,6 +11,8 @@ namespace wrap
 	public:
 		using FunctionPtr = std::function<void(Actor*)>;
 
+		CLASS_DECLARATION(CollisionComponent)
+
 
 		virtual void Initialize() override;
 		virtual void Update() override;

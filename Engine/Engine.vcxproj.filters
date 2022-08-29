@@ -146,6 +146,9 @@
     <ClCompile Include="Physics\ContactListener.cpp">
       <Filter>Source\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Component\TilemapComponent.cpp">
+      <Filter>Source\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\MathUtils.h">
@@ -286,33 +289,18 @@
     <ClInclude Include="Physics\ContactListener.h">
       <Filter>Source\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="Component\TilemapComponent.h">
+      <Filter>Source\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\Build\Assets\Eni.txt">
+    <Text Include="..\Build\Assets\Scene\level.txt">
       <Filter>Resource</Filter>
     </Text>
-    <Text Include="..\Build\Assets\Player.txt">
+    <Text Include="..\Build\Assets\Scene\preFab.txt">
       <Filter>Resource</Filter>
     </Text>
-    <Text Include="..\Build\Assets\Bullet.txt">
-      <Filter>Resource</Filter>
-    </Text>
-    <Text Include="..\Build\Assets\Multi.txt">
-      <Filter>Resource</Filter>
-    </Text>
-    <Text Include="..\Build\Assets\Rotater.txt">
-      <Filter>Resource</Filter>
-    </Text>
-    <Text Include="..\Build\Assets\Bomb.txt">
-      <Filter>Resource</Filter>
-    </Text>
-    <Text Include="..\Build\Assets\Missle.txt">
-      <Filter>Resource</Filter>
-    </Text>
-    <Text Include="..\Build\Assets\Lazer.txt">
-      <Filter>Resource</Filter>
-    </Text>
-    <Text Include="..\Build\Assets\level.txt">
+    <Text Include="..\Build\Assets\Scene\Tilemap.txt">
       <Filter>Resource</Filter>
     </Text>
   </ItemGroup>

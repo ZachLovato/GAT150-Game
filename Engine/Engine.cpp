@@ -21,6 +21,7 @@ namespace wrap
 		REGISTER_CLASS(SpriteComponent);
 		REGISTER_CLASS(SpriteAniComponent);
 		REGISTER_CLASS(TextComponent);
+		REGISTER_CLASS(TilemapComponent);
 	}
 
 }

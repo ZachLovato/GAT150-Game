@@ -1,17 +1,17 @@
 {
    "actors":[
-   { 
-         "type":"Actor", 
-         "name":"Music", 
-         "components":[ 
-            { 
-               "type":"AudioComponent", 
-               "sound_name":"audio/boom.mp3", 
-               "loop":true, 
-               "play_on_start":true 
-            } 
-         ] 
-      }, 
+      {
+         "type":"Actor",
+         "name":"Music",
+         "components":[
+            {
+               "type":"AudioComponent",
+               "sound_name":"audio/ars.mp3",
+               "loop":true,
+               "play_on_start":true
+            }
+         ]
+      },
       {
          "type":"Actor",
          "name":"Background",
@@ -56,7 +56,7 @@
                "type":"CollisionComponent",
                "data.size":[
                   800,
-                  24
+                  48
                ]
             }
          ]
@@ -79,8 +79,8 @@
             {
                "type":"TextComponent",
                "text":"Hello World!",
-               "font_name":"font/yorkwhiteletter.ttf",
-               "font_size":16,
+               "font_name":"font/KOMIKATR.ttf",
+               "font_size":8,
                "registration":[
                   0.0,
                   0.5
@@ -112,7 +112,7 @@
          "components":[
             {
                "type":"PlayerComponent",
-               "speed":10.0
+               "speed":8.0
             },
             {
                "type":"RBPhysicsComponent",
@@ -123,8 +123,8 @@
             {
                "type":"CollisionComponent",
                "data.size":[
-                  48,
-                  48
+                  24,
+                  36
                ]
             },
             {

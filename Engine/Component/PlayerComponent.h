@@ -9,6 +9,9 @@ namespace wrap
 	public:
 		PlayerComponent() = default;
 
+		CLASS_DECLARATION(PlayerComponent)
+
+
 		void Initalize();
 		void Update() override;
 		

@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Component.h"
+#include "Math/Transform.h"
 #include "Renderer/Model.h"
 #include <vector>
 
@@ -14,13 +15,15 @@ namespace wrap
 	{
 	public:
 		Actor() = default;
+		Actor(const Actor& other);
 		Actor(const Transform& transform) : m_transform{ transform } {}
+
+		CLASS_DECLARATION(Actor)
 		
 		void Initialize() override;
 		virtual void Update() override;
 		virtual void Draw(Renderer& renderer);
 
-		// Inherited via ISerializable
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;
 
@@ -39,6 +42,13 @@ namespace wrap
 		const std::string& GetName() { return name; }
 		void SetName(const std::string& name) { this->name = name; }
 
+		void SetDestory() { m_destroy = true; }
+
+		void SetActive(bool active) { this->active = active; }
+		bool IsActive() { return active; }
+
+		Scene* GetScene() { return m_scene; }
+
 		friend class Scene;
 		friend class Component;
 
@@ -50,18 +60,13 @@ namespace wrap
 		std::string tag;
 
 		bool m_destroy = false;
-
-		//physics
-		Vector2 m_velocity;
-		float m_damping = .7f;
+		bool active = true;
 
 		Scene* m_scene = nullptr;
 		Actor* m_parent = nullptr;
 
 		std::vector<std::unique_ptr <Component>> m_componets;
 		std::vector<std::unique_ptr <Actor>> m_children;
-
-
 
 	};
 

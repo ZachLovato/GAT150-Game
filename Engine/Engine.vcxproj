@@ -167,6 +167,7 @@
     <ClCompile Include="Component\SpriteAniComponent.cpp" />
     <ClCompile Include="Component\SpriteComponent.cpp" />
     <ClCompile Include="Component\TextComponent.cpp" />
+    <ClCompile Include="Component\TilemapComponent.cpp" />
     <ClCompile Include="Core\file.cpp" />
     <ClCompile Include="Core\Logger.cpp" />
     <ClCompile Include="Core\Memory.cpp" />
@@ -204,6 +205,7 @@
     <ClInclude Include="Component\SpriteAniComponent.h" />
     <ClInclude Include="Component\SpriteComponent.h" />
     <ClInclude Include="Component\TextComponent.h" />
+    <ClInclude Include="Component\TilemapComponent.h" />
     <ClInclude Include="Core\file.h" />
     <ClInclude Include="Core\Logger.h" />
     <ClInclude Include="Core\Memory.h" />
@@ -240,15 +242,9 @@
     <ClInclude Include="Serialization\Json.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\Build\Assets\Bomb.txt" />
-    <Text Include="..\Build\Assets\Bullet.txt" />
-    <Text Include="..\Build\Assets\Eni.txt" />
-    <Text Include="..\Build\Assets\Lazer.txt" />
-    <Text Include="..\Build\Assets\level.txt" />
-    <Text Include="..\Build\Assets\Missle.txt" />
-    <Text Include="..\Build\Assets\Multi.txt" />
-    <Text Include="..\Build\Assets\Player.txt" />
-    <Text Include="..\Build\Assets\Rotater.txt" />
+    <Text Include="..\Build\Assets\Scene\level.txt" />
+    <Text Include="..\Build\Assets\Scene\preFab.txt" />
+    <Text Include="..\Build\Assets\Scene\Tilemap.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

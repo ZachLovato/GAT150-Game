@@ -9,6 +9,9 @@ namespace wrap
 	public:
 		PhysicsComponent () = default;
 
+		CLASS_DECLARATION(PhysicsComponent)
+
+
 		void Update() override;
 		virtual void Initilize();
 		virtual void ApplyForce(const Vector2& force) { acceleration += force; }

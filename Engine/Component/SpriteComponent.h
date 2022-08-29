@@ -12,6 +12,9 @@ namespace wrap
 		virtual void Update() override;
 		virtual void Draw(Renderer& renderer) override;
 
+		CLASS_DECLARATION(SpriteComponent)
+
+
 		// Inherited via RenderComponent
 		virtual bool Write(const rapidjson::Value& value) const override;
 

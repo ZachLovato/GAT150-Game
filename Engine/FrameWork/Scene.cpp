@@ -22,26 +22,6 @@ namespace wrap
 			}
 		}
 
-		//check collision
-		for (auto iter1 = m_actors.begin(); iter1 != m_actors.end(); iter1++)
-		{
-			//check collision
-			for (auto iter2 = m_actors.begin(); iter2 != m_actors.end(); iter2++)
-			{
-				if (iter1 == iter2) continue;
-
-				float radius = (*iter1)->GetRadius() + (*iter2)->GetRadius();
-				float distance = (*iter1)->m_transform.position.Distance((*iter2)->m_transform.position);
-
-				if (distance < radius)
-				{
-					(*iter1)->OnCollision((*iter2).get());
-					(*iter2)->OnCollision((*iter1).get());
-				}
-
-			}
-		}
-
 	}
 
 	void Scene::Initialize()
@@ -61,6 +41,11 @@ namespace wrap
 	{
 		actor->m_scene = this;
 		m_actors.push_back(std::move(actor));
+	}
+
+	void Scene::Removeall()
+	{
+		m_actors.clear();
 	}
 
 	bool Scene::Write(const rapidjson::Value& value) const
@@ -86,7 +71,21 @@ namespace wrap
 			{
 				// read actor
 				actor->Read(actorValue);
-				Add(std::move(actor));
+
+				bool preFab = false;
+				READ_DATA(actorValue, preFab);
+
+				if (preFab)
+				{
+					std::string name = actor->GetName();
+					Factory::Instance().RegisterPreFab(name, std::move(actor));
+				}
+				else
+				{
+					Add(std::move(actor));
+
+				}
+
 			}
 
 
