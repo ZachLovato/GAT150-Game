@@ -14,6 +14,7 @@
 #include "FrameWork/Game.h"
 #include "FrameWork/Factory.h"
 #include "FrameWork/SimpleTon.h"
+#include "FrameWork/EventManager.h"
 
 #include "Component/PlayerComponent.h"
 #include "Component/CollisionComponent.h"
@@ -41,6 +42,7 @@
 #include <memory>
 #include <list>
 #include <vector>
+#include <variant>
 
 namespace wrap
 {
@@ -50,6 +52,7 @@ namespace wrap
 	extern AudioSystem g_audio;
 	extern ResourceManager g_resources;
 	extern PhysicsSystem g_physicsSystem;
+	extern EventManager g_eventManager;
 
 	class Engine : public Singleton<Engine>
 	{

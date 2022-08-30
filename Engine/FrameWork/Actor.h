@@ -43,6 +43,7 @@ namespace wrap
 		void SetName(const std::string& name) { this->name = name; }
 
 		void SetDestory() { m_destroy = true; }
+		bool IsDestory() { return m_destroy; }
 
 		void SetActive(bool active) { this->active = active; }
 		bool IsActive() { return active; }

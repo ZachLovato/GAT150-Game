@@ -1,6 +1,5 @@
 #pragma once
 #include "Component/RenderComponent.h"
-#include "Math/Rect.h"
 
 namespace wrap
 {
@@ -19,6 +18,8 @@ namespace wrap
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;
 
+		Rect& GetSource() override;
+
 		// json animation values
 		float fps = 0.0f;
 		int num_colums = 0;
@@ -30,8 +31,6 @@ namespace wrap
 		int frame = 0;
 		float frameTimer = 0;
 
-
-		Rect source;
 		std::shared_ptr<Texture> m_texture;
 
 	};

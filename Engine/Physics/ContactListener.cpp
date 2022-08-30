@@ -14,12 +14,12 @@ namespace wrap
 			Actor* actorA = (Actor*)(fixtureA->GetUserData().pointer);
 			Actor* actorB = (Actor*)(fixtureB->GetUserData().pointer);
 
-			if (actorA->GetComponent<CollisionComponent>())
+			if (!actorA->IsDestory() && actorA->GetComponent<CollisionComponent>())
 			{
 				actorA->GetComponent<CollisionComponent>()->OnCollisionEnter(actorB);
 			}
 
-			if (actorB->GetComponent<CollisionComponent>())
+			if (!actorB->IsDestory() && actorB->GetComponent<CollisionComponent>())
 			{
 				actorB->GetComponent<CollisionComponent>()->OnCollisionEnter(actorA);
 			}
@@ -37,12 +37,12 @@ namespace wrap
 			Actor* actorA = (Actor*)(fixtureA->GetUserData().pointer);
 			Actor* actorB = (Actor*)(fixtureB->GetUserData().pointer);
 
-			if (actorA->GetComponent<CollisionComponent>())
+			if (!actorA->IsDestory() && actorA->GetComponent<CollisionComponent>())
 			{
 				actorA->GetComponent<CollisionComponent>()->OnCollisionEnter(actorB);
 			}
 
-			if (actorB->GetComponent<CollisionComponent>())
+			if (!actorB->IsDestory() && actorB->GetComponent<CollisionComponent>())
 			{
 				actorB->GetComponent<CollisionComponent>()->OnCollisionEnter(actorA);
 			}

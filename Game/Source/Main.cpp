@@ -10,6 +10,7 @@ int main() {
 	wrap::g_audio.Initialize();
 	wrap::g_resources.Initialize();
 	wrap::g_physicsSystem.Initialize();
+	wrap::g_eventManager.Initialize();
 
 	wrap::Engine::Instance().Register();
 
@@ -34,6 +35,7 @@ int main() {
 		wrap::g_inputSystem.Update();
 		wrap::g_physicsSystem.Update();
 		wrap::g_audio.Update();
+		wrap::g_eventManager.Update();
 
 		if (wrap::g_inputSystem.GetKeyState(wrap::key_escape) == wrap::InputSystem::KeyState::Pressed) quit = true;
 		

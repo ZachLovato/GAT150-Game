@@ -22,9 +22,6 @@ namespace wrap
 	
 		//shared texture to a model in a model comonent
 		std::shared_ptr<Texture> m_texture;
-	
-		Rect source;
-		//std::shared_ptr<Texture> m_texture;
 
 
 	};

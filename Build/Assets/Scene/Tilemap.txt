@@ -49,7 +49,7 @@
          "components":[
             {
                "type":"SpriteComponent",
-               "texture_name":"Sprites/TileSet1.png",
+               "texture_name":"Sprites/TileSet2.png",
                "source":[
                   0,
                   128,

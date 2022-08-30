@@ -8,6 +8,7 @@ namespace wrap
 	AudioSystem g_audio;
 	ResourceManager g_resources;
 	PhysicsSystem g_physicsSystem;
+	EventManager g_eventManager;
 
 	void Engine::Register()
 	{

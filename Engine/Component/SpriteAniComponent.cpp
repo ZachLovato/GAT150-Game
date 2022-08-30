@@ -4,54 +4,73 @@
 #include "Engine.h"
 
 
-void wrap::SpriteAniComponent::Update()
+namespace wrap 
 {
-    //update frame
-    frameTimer += g_time.deltaTime;
-    if (frameTimer >= 1.0f / fps)
-    {
-        frameTimer = 0;
-        frame++;
-        if (frame > end_frame)
+
+    void SpriteAniComponent::Update()
+    {   
+        //update frame
+        frameTimer += g_time.deltaTime;
+        if (frameTimer >= 1.0f / fps)
         {
-            frame = start_frame;
+            frameTimer = 0;
+            frame++;
+            if (frame > end_frame)
+            {
+                frame = start_frame;
+            }
         }
+
+        //calculate source frame
+        Vector2 cellSize = m_texture->GetSize() / Vector2{ num_colums, num_rows };
+
+        int column = (frame - 1) % num_colums;
+        int row = (frame - 1) / num_colums;
+
+        source.x = (int)(column * cellSize.x);
+        source.y = (int)(row * cellSize.y);
+        source.w = (int)(cellSize.x);
+        source.h = (int)(cellSize.y);
     }
 
-    //calculate source frame
-    Vector2 cellSize = m_texture->GetSize() / Vector2{ num_colums, num_rows };
+    void SpriteAniComponent::Draw(Renderer& renderer)
+    {
+        renderer.Draw(m_texture, GetSource(), m_owner->m_transform);
+    }
 
-    int column = (frame - 1) % num_colums;
-    int row = (frame - 1) / num_colums;
+    bool SpriteAniComponent::Write(const rapidjson::Value& value) const
+    {
+        return true;
+    }
 
-    source.x = (int)(column * cellSize.x);
-    source.y = (int)(row * cellSize.y);
-    source.w = (int)(cellSize.x);
-    source.h = (int)(cellSize.y);
-}
+    bool SpriteAniComponent::Read(const rapidjson::Value& value)
+    {
+        std::string texture_name;
+        READ_DATA(value, texture_name);
 
-void wrap::SpriteAniComponent::Draw(Renderer& renderer)
-{
-    renderer.Draw(m_texture, source, m_owner->m_transform);
-}
+        m_texture = g_resources.Get<Texture>(texture_name, g_renderer);
 
-bool wrap::SpriteAniComponent::Write(const rapidjson::Value& value) const
-{
-    return true;
-}
+        READ_DATA(value, fps);
+        READ_DATA(value, num_colums);
+        READ_DATA(value, num_rows);
+        READ_DATA(value, start_frame);
+        READ_DATA(value, end_frame);
 
-bool wrap::SpriteAniComponent::Read(const rapidjson::Value& value)
-{
-    std::string texture_name;
-    READ_DATA(value, texture_name);
+        return true;
+    }
 
-    m_texture = g_resources.Get<Texture>(texture_name, g_renderer);
+    Rect& SpriteAniComponent::GetSource()
+    {
+        // calculate source rect
+        Vector2 cellSize = m_texture->GetSize() / Vector2{ num_colums, num_rows };
+        int column = (frame - 1) % num_colums;
+        int row = (frame - 1) / num_colums;
+        source.x = (int)(column * cellSize.x);
+        source.y = (int)(row * cellSize.y);
+        source.w = (int)(cellSize.x);
+        source.h = (int)(cellSize.y);
+        return source;
 
-    READ_DATA(value, fps);
-    READ_DATA(value, num_colums);
-    READ_DATA(value, num_rows);
-    READ_DATA(value, start_frame);
-    READ_DATA(value, end_frame);
+    }
 
-    return true;
 }

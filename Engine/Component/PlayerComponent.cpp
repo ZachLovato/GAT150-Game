@@ -100,14 +100,18 @@ namespace wrap
 
 		if (other->GetName() == "Oil")
 		{
+			Event event;
+			event.name = "EVENT ADD POINTS";
+			event.data = 100;
+			g_eventManager.Notify(event);
 			other->SetDestory();
 		}
-
+		std::cout << "player enter\n";
 	}
 
 	void PlayerComponent::OnCollisionExit(Actor* other)
 	{
-		std::cout << "player enter\n";
+		std::cout << "player exit\n";
 	}
 
 }
