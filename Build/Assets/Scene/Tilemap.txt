@@ -4,7 +4,7 @@
          "type":"Actor",
          "name":"tile01",
          "tag":"Ground",
-         "prefab":true,
+         "preFab":true,
          "transform":{
             "scale":[
                2,
@@ -27,11 +27,7 @@
                "data.is_dynamic":false
             },
             {
-               "type":"CollisionComponent",
-               "data.size":[
-                  64,
-                  64
-               ]
+               "type":"CollisionComponent"
             }
          ]
       },
@@ -39,7 +35,7 @@
          "type":"Actor",
          "name":"tile02",
          "tag":"Ground",
-         "prefab":true,
+         "preFab":true,
          "transform":{
             "scale":[
                2,
@@ -62,11 +58,7 @@
                "data.is_dynamic":false
             },
             {
-               "type":"CollisionComponent",
-               "data.size":[
-                  64,
-                  64
-               ]
+               "type":"CollisionComponent"
             }
          ]
       },
@@ -96,10 +88,10 @@
                "tiles":[
                   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
                   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                  2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 
                   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                  0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0,
                   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-                  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                  0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 
                   2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 
                   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
                   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 

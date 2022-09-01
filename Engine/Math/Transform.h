@@ -24,7 +24,6 @@ namespace wrap
 			this->scale = { scale };
 		}
 
-		// Inherited via ISerializable
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;
 		

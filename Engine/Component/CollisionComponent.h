@@ -28,6 +28,7 @@ namespace wrap
 
 	private:
 		PhysicsSystem::CollisionData data;
+		Vector2 scale_offset = Vector2{ 1, 1 };
 
 		FunctionPtr m_enterFunction;
 		FunctionPtr m_exitFunction;

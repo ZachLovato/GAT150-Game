@@ -12,7 +12,7 @@ namespace wrap
 
 	void wrap::SpriteComponent::Draw(Renderer& renderer)
 	{
-		renderer.Draw(m_texture, GetSource(), m_owner->m_transform);
+		renderer.Draw(m_texture, GetSource(), m_owner->m_transform, registration, flipHorizontal);
 
 	}
 

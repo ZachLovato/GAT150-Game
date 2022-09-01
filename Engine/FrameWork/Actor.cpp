@@ -1,6 +1,7 @@
 #include "Actor.h"
 #include "Component/RenderComponent.h"
 #include "Factory.h"
+#include "Engine.h"
 
 namespace wrap 
 {
@@ -8,6 +9,7 @@ namespace wrap
 	{
 		name = other.name;
 		tag = other.tag;
+		lifespans = other.lifespans;
 		m_transform = other.m_transform;
 
 		m_scene = other.m_scene;
@@ -36,6 +38,15 @@ namespace wrap
 	{
 		if (!active) return;
 
+		if (lifespans != 0)
+		{
+			lifespans -= g_time.deltaTime;
+			if (lifespans <= 0)
+			{
+				SetDestory();
+			}
+		}
+
 		for (auto& component : m_componets)
 		{
 			component->Update();
@@ -52,17 +63,13 @@ namespace wrap
 
 	void Actor::Draw(Renderer& renderer)
 	{
-		//m_model.Draw(renderer, m_transform.position, m_transform.rotation, m_transform.scale);
 		for (auto& component : m_componets)
 		{
 			auto renderComponet = dynamic_cast<RenderComponent*>(component.get());
-			if (renderComponet)
+			if (renderComponet && active)
 			{
 				renderComponet->Draw(renderer);
 			}
-
-			
-			//component->Update();
 		}
 
 		for (auto& child : m_children)
@@ -96,6 +103,7 @@ namespace wrap
 		READ_DATA(value, tag);
 		READ_DATA(value, name);
 		READ_DATA(value, active);
+		READ_DATA(value, lifespans);
 
 		if (value.HasMember("transform")) m_transform.Read(value["transform"]);
 

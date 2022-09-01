@@ -122,9 +122,6 @@
     <ClCompile Include="Math\Transform.cpp">
       <Filter>Source\Math</Filter>
     </ClCompile>
-    <ClCompile Include="Component\RenderComponent.cpp">
-      <Filter>Source\Component</Filter>
-    </ClCompile>
     <ClCompile Include="Component\SpriteAniComponent.cpp">
       <Filter>Source\Component</Filter>
     </ClCompile>
@@ -151,6 +148,12 @@
     </ClCompile>
     <ClCompile Include="FrameWork\EventManager.cpp">
       <Filter>Source\FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\CharacterComponent.cpp">
+      <Filter>Source\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\CameraComponent.cpp">
+      <Filter>Source\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -300,6 +303,12 @@
     </ClInclude>
     <ClInclude Include="FrameWork\EventManager.h">
       <Filter>Source\FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\CharacterComponent.h">
+      <Filter>Source\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\CameraComponent.h">
+      <Filter>Source\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

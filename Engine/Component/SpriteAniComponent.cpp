@@ -35,7 +35,7 @@ namespace wrap
 
     void SpriteAniComponent::Draw(Renderer& renderer)
     {
-        renderer.Draw(m_texture, GetSource(), m_owner->m_transform);
+        renderer.Draw(m_texture, GetSource(), m_owner->m_transform, registration, flipHorizontal);
     }
 
     bool SpriteAniComponent::Write(const rapidjson::Value& value) const

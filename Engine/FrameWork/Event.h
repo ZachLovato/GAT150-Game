@@ -5,7 +5,7 @@
 
 namespace wrap
 {
-	class GameObjects;
+	class GameObject;
 
 	class Event
 	{
@@ -14,8 +14,14 @@ namespace wrap
 
 	public:
 		std::string name;
-		GameObjects* receiver = nullptr;
+		GameObject* receiver = nullptr;
 		std::variant<int, bool, float, std::string> data;
 
+	};
+
+	class INotify
+	{
+	public:
+		virtual void OnNotify(const Event& event) = 0;
 	};
 }

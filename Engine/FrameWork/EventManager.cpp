@@ -17,7 +17,7 @@ namespace wrap
 		//
 	}
 
-	void wrap::EventManager::Subscribe(const std::string& name, Event::functionPtr function, GameObjects* receiver)
+	void wrap::EventManager::Subscribe(const std::string& name, Event::functionPtr function, GameObject* receiver)
 	{
 		Observer observer;
 		observer.receiver = receiver;
@@ -26,9 +26,20 @@ namespace wrap
 		m_events[name].push_back(observer);
 	}
 
-	void wrap::EventManager::Unsubscribe(const std::string& name, GameObjects* receiver)
+	void wrap::EventManager::Unsubscribe(const std::string& name, GameObject* receiver)
 	{
-		//
+		// get list of observers for event
+		auto& observers = m_events[name];
+
+		// remove observer with matching receiver from observers
+		for (auto iter = observers.begin(); iter != observers.end(); iter++)
+		{
+			if (iter->receiver == receiver)
+			{
+				observers.erase(iter);
+				break;
+			}
+		}
 	}
 
 	void wrap::EventManager::Notify(const Event& event)

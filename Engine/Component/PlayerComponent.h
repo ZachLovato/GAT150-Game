@@ -1,10 +1,10 @@
 #pragma once
 #include "FrameWork/Component.h"
-#include "Physics/Collission.h"
+#include "CharacterComponent.h"
 
 namespace wrap
 {
-	class PlayerComponent : public Component, public ICollision
+	class PlayerComponent : public CharacterComponent
 	{
 	public:
 		PlayerComponent() = default;
@@ -15,18 +15,15 @@ namespace wrap
 		void Initalize();
 		void Update() override;
 		
+		virtual void OnNotify(const Event& event) override;
 		virtual void OnCollisionEnter(Actor* other) override;
 		virtual void OnCollisionExit(Actor* other) override;
 
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;
 	
-		float speed = 0.0f;
-	private:
 
-
-
-
+		float jump = 30.0f;
 
 	};
 }

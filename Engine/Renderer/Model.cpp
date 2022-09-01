@@ -33,7 +33,6 @@ namespace wrap
 			wrap::Vector2 p2 = Vector2::Rotate((m_points[i + 1] * scale), angle) + position;
 
 			renderer.DrawLine(p1, p2, m_color);
-			//renderer.DrawLine(p1, p1, m_color);
 		}
 	}
 

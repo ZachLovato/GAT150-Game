@@ -32,9 +32,6 @@ namespace wrap
 		void AddComponent(std::unique_ptr<Component> compone);
 		template<typename T>
 		T* GetComponent();
-
-		virtual void OnCollision(Actor* other) {}
-		float GetRadius() { return 0; }// m_model.GetRadius()* std::max(m_transform.scale.x, m_transform.scale.y); }
 		
 		const std::string& GetTag() { return tag; }
 		void SetTag(const std::string& tag) { this->tag = tag; }
@@ -62,6 +59,7 @@ namespace wrap
 
 		bool m_destroy = false;
 		bool active = true;
+		float lifespans = 0.0f;
 
 		Scene* m_scene = nullptr;
 		Actor* m_parent = nullptr;

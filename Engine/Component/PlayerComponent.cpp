@@ -7,16 +7,18 @@ namespace wrap
 {
 	void PlayerComponent::Initalize()
 	{
-		auto component = m_owner->GetComponent<CollisionComponent>();
-		if (component)
-		{
-			component->SetCollisionEnter(std::bind(&PlayerComponent::OnCollisionEnter, this, std::placeholders::_1));
-			component->SetCollisionExit(std::bind(&PlayerComponent::OnCollisionExit, this, std::placeholders::_1));
-		}
+		CharacterComponent::Initialize();
 	}
 
 	void wrap::PlayerComponent::Update()
 	{
+		// set camera 
+		auto camera = m_owner->GetScene()->GetActorFromName("Camera");
+		if (camera)
+		{
+			camera->m_transform.position = math::Lerp(camera -> m_transform.position, m_owner->m_transform.position, 2 * g_time.deltaTime);
+		}
+
 		Vector2 direction = Vector2::zero;
 
 		if (wrap::g_inputSystem.GetKeyState(wrap::key_left) == wrap::InputSystem::KeyState::Held
@@ -24,7 +26,6 @@ namespace wrap
 			)
 		{
 			direction = Vector2::left;
-			//std::cout << "left\n";
 		}
 		
 		if (wrap::g_inputSystem.GetKeyState(wrap::key_right) == wrap::InputSystem::KeyState::Held
@@ -32,10 +33,8 @@ namespace wrap
 			)
 		{
 			direction = Vector2::right;
-			//std::cout << "right\n";
 		}
 
-		//float thrust = 0;
 		if (wrap::g_inputSystem.GetKeyState(wrap::key_up) == wrap::InputSystem::KeyState::Pressed
 			|| wrap::g_inputSystem.GetKeyState(wrap::key_w) == wrap::InputSystem::KeyState::Pressed
 			)
@@ -43,40 +42,34 @@ namespace wrap
 			auto component = m_owner->GetComponent<PhysicsComponent>(); // jump
 			if (component)
 			{
-				component->ApplyForce(Vector2::up * 600);
+				component->ApplyForce(Vector2::up * jump);
 			}
 
-			//thrust = speed;
-			//std::cout << "up\n";
 		}
 
+		Vector2 velocity;
 		auto component = m_owner->GetComponent<PhysicsComponent>();
 		if (component)
 		{
-			//thrust force
-			//Vector2 force = Vector2::Rotate({ 1, 0 }, math::DegToRad(m_owner->m_transform.rotation)) * thrust;
-			component->ApplyForce(direction * speed);
-
-			//grav force
-			//force = (Vector2{ 400,300 } - m_owner->m_transform.position).Normalized() * 50.0f;
-			//component->ApplyForce(force);
+			
+			component->ApplyForce(direction * 20);
+			velocity = component->velocity;
 		}
 
-		//m_owner->m_transform += direction * 300 * g_time.deltaTime;
 
 		if (g_inputSystem.GetKeyState(key_space) == InputSystem::KeyState::Pressed)
 		{
 			auto component = m_owner->GetComponent<PhysicsComponent>();
 			if (component)
 			{
-				component->ApplyForce(Vector2::up * 30);
+				component->ApplyForce(Vector2::up * 250);
 			}
+		}
 
-			/*auto component = m_owner->GetComponent<AudioComponent>();
-			if (component)
-			{
-				component->Play();
-			}*/
+		auto renderComponent = m_owner->GetComponent<RenderComponent>();
+		if (renderComponent)
+		{
+			if (velocity.x != 0) renderComponent->GetFlipHorizontal(velocity.x < 0);
 		}
 
 	}
@@ -88,30 +81,74 @@ namespace wrap
 
 	bool PlayerComponent::Read(const rapidjson::Value& value)
 	{
-		READ_DATA(value, speed);
+		CharacterComponent::Read(value);
+		READ_DATA(value, jump);
 
 
 		return true;
 	}
 
+	void PlayerComponent::OnNotify(const Event& event)
+	{
+		if (event.name == "EVENT_DAMAGE")
+		{
+			std::cout << health << std::endl;
+			health -= std::get<float>(event.data);
+			if (health <= 0)
+			{
+				m_owner->SetDestory();
+
+				Event event;
+
+				event.name = "EVENT_PLAYER_DEAD";
+
+				g_eventManager.Notify(event);
+			}
+		}
+	}
+
 	void PlayerComponent::OnCollisionEnter(Actor* other)
 	{
-		std::cout << "player enter\n";
-
 		if (other->GetName() == "Oil")
 		{
 			Event event;
-			event.name = "EVENT ADD POINTS";
+			event.name = "EVENT_ADD_POINTS";
 			event.data = 100;
 			g_eventManager.Notify(event);
 			other->SetDestory();
 		}
-		std::cout << "player enter\n";
+
+		if (other->GetTag() == "Enemy")
+		{
+			Event event;
+			event.name = "EVENT_DAMAGE";
+			event.data = damage;
+			event.receiver = other;
+
+			g_eventManager.Notify(event);
+		}
 	}
 
-	void PlayerComponent::OnCollisionExit(Actor* other)
+	void PlayerComponent::OnCollisionExit(Actor* other) // the collsion for enter goes here
 	{
-		std::cout << "player exit\n";
+		if (other->GetTag() == "Pickup")
+		{
+			Event event;
+			event.name = "EVENT_ADD_POINTS";
+			event.data = 100;
+			g_eventManager.Notify(event);
+			other->SetDestory();
+		}
+
+		if (other->GetTag() == "Enemy")
+		{
+			Event event;
+			event.name = "EVENT_DAMAGE";
+			event.data = damage;
+			event.receiver = other;
+
+			g_eventManager.Notify(event);
+		}
 	}
 
 }

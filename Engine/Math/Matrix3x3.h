@@ -53,17 +53,15 @@ namespace wrap
 
 		result[0][0] = rows[0][0] * mx[0][0] + rows[0][1] * mx[1][0] + rows[0][2] * mx[2][0];
 		result[0][1] = rows[0][0] * mx[0][1] + rows[0][1] * mx[1][1] + rows[0][2] * mx[2][1];
-		result[0][2] = rows[0][0] * mx[0][2] + rows[0][2] * mx[1][2] + rows[0][2] * mx[2][2];
-
+		result[0][2] = rows[0][0] * mx[0][2] + rows[0][1] * mx[1][2] + rows[0][2] * mx[2][2];
 
 		result[1][0] = rows[1][0] * mx[0][0] + rows[1][1] * mx[1][0] + rows[1][2] * mx[2][0];
 		result[1][1] = rows[1][0] * mx[0][1] + rows[1][1] * mx[1][1] + rows[1][2] * mx[2][1];
-		result[1][2] = rows[1][0] * mx[0][2] + rows[1][2] * mx[1][2] + rows[1][2] * mx[2][2];
-
+		result[1][2] = rows[1][0] * mx[0][2] + rows[1][1] * mx[1][2] + rows[1][2] * mx[2][2];
 
 		result[2][0] = rows[2][0] * mx[0][0] + rows[2][1] * mx[1][0] + rows[2][2] * mx[2][0];
 		result[2][1] = rows[2][0] * mx[0][1] + rows[2][1] * mx[1][1] + rows[2][2] * mx[2][1];
-		result[2][2] = rows[2][0] * mx[0][2] + rows[2][2] * mx[1][2] + rows[2][2] * mx[2][2];
+		result[2][2] = rows[2][0] * mx[0][2] + rows[2][1] * mx[1][2] + rows[2][2] * mx[2][2];
 
 		return result;
 	}
@@ -110,7 +108,7 @@ namespace wrap
 
 		mx[0] = Vector3({c, -s, 0.0f});
 		mx[1] = Vector3({s, c, 0.0f});
-		mx[2] = Vector3({0.0f,  0.0f, 0.0f});
+		mx[2] = Vector3({0.0f,  0.0f, 1.0f});
 
 		return mx;
 	}
@@ -151,6 +149,7 @@ namespace wrap
 	{
 		Vector2 x = { rows[0][0], rows[0][1] };
 		Vector2 y = { rows[1][0], rows[1][1] };
+
 		return { x.Length(), y.Length() };
 
 	}
