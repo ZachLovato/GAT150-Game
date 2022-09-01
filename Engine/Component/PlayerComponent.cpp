@@ -35,7 +35,8 @@ namespace wrap
 			direction = Vector2::right;
 		}
 
-		if (wrap::g_inputSystem.GetKeyState(wrap::key_up) == wrap::InputSystem::KeyState::Pressed
+		if (onGround && 
+			wrap::g_inputSystem.GetKeyState(wrap::key_up) == wrap::InputSystem::KeyState::Pressed
 			|| wrap::g_inputSystem.GetKeyState(wrap::key_w) == wrap::InputSystem::KeyState::Pressed
 			)
 		{
@@ -51,9 +52,14 @@ namespace wrap
 		auto component = m_owner->GetComponent<PhysicsComponent>();
 		if (component)
 		{
-			
-			component->ApplyForce(direction * 20);
+			// if in the air (m_groundCount == 0) then reduce force 
+			std::cout << onGround << std::endl;
+			float multiplier = (onGround) ? 1 : 0.2f;
+
+			component->ApplyForce(direction * 20 * multiplier);
 			velocity = component->velocity;
+			//component->ApplyForce(direction * 20);
+			//velocity = component->velocity;
 		}
 
 
@@ -66,10 +72,18 @@ namespace wrap
 			}
 		}
 
-		auto renderComponent = m_owner->GetComponent<RenderComponent>();
-		if (renderComponent)
+		auto aniComponent = m_owner->GetComponent<SpriteAniComponent>();
+		if (aniComponent)
 		{
-			if (velocity.x != 0) renderComponent->GetFlipHorizontal(velocity.x < 0);
+			if (velocity.x != 0) aniComponent->GetFlipHorizontal(velocity.x < 0);
+			if (std::fabs(velocity.x) > 0)
+			{
+				aniComponent->SetSequence("run");
+			}
+			else
+			{
+				aniComponent->SetSequence("idle");
+			}
 		}
 
 	}
@@ -109,6 +123,11 @@ namespace wrap
 
 	void PlayerComponent::OnCollisionEnter(Actor* other)
 	{
+		if (other->GetTag() == "Ground")
+		{
+			m_groundCount++;
+		}
+
 		if (other->GetName() == "Oil")
 		{
 			Event event;

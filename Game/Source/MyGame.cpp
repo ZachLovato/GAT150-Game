@@ -84,7 +84,7 @@ void MyGame::Update()
 			m_scene->Add(std::move(actor));
 		}
 
-		for (int i = 0; i < 3; i++)//spawns Ghosts
+		for (int i = 0; i < 0; i++)//spawns Ghosts
 		{
 			auto actor = wrap::Factory::Instance().Create<wrap::Actor>("ghost");
 			actor->m_transform.position = { wrap::random(100, 700), -200 };

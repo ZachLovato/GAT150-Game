@@ -36,12 +36,27 @@
 				},
 				{
 					"type":"SpriteAniComponent",
-					"texture_name":"Sprites/PlayerWalk.png",
-					"fps":9.0,
-					"num_colums":9,
-					"num_rows":1,
-					"start_frame":1,
-					"end_frame":9
+					"default_sequence":"idle",
+					"sequences":[
+						{
+							"sequence.name":"run",
+							"sequence.fps":9.0,
+							"sequence.num_columns":9,
+							"sequence.num_rows":1,
+							"sequence.start_frame":1,
+							"sequence.end_frame":9,
+							"texture_name":"Sprites/PlayerWalk.png"
+						},
+						{
+							"sequence.name":"idle",
+							"sequence.fps":9.0,
+							"sequence.num_columns":9,
+							"sequence.num_rows":1,
+							"sequence.start_frame":1,
+							"sequence.end_frame":9,
+							"texture_name":"Sprites/PlayerIdle.png"
+						}
+					]
 				},
 				{
 					"type":"AudioComponent",
@@ -83,12 +98,17 @@
 				},
 				{
 					"type":"SpriteAniComponent",
-					"texture_name":"Sprites/oil.png",
-					"fps":9.0,
-					"num_colums":8,
-					"num_rows":1,
-					"start_frame":1,
-					"end_frame":8
+					"sequences":[
+						{
+							"sequence.name":"idle",
+							"sequence.fps":9,
+							"sequence.num_columns":8,
+							"sequence.num_rows":1,
+							"sequence.start_frame":1,
+							"sequence.end_frame":8,
+							"texture_name":"Sprites/oil.png"
+						}
+					]
 				}
 			]
 		},
@@ -132,12 +152,17 @@
 				},
 				{
 					"type":"SpriteAniComponent",
-					"texture_name":"Sprites/Ghost.png",
-					"fps":4.0,
-					"num_colums":12,
-					"num_rows":1,
-					"start_frame":1,
-					"end_frame":12
+					"sequences":[
+						{
+							"sequence.name":"idle",
+							"sequence.fps":4.0,
+							"sequence.num_columns":12,
+							"sequence.num_rows":1,
+							"sequence.start_frame":1,
+							"sequence.end_frame":12,
+							"texture_name":"Sprites/Ghost.png"
+						}
+					]
 				}
 			]
 		}

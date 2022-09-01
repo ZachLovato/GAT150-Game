@@ -24,6 +24,7 @@ namespace wrap
 	
 
 		float jump = 30.0f;
-
+		int m_groundCount = 0;
+		bool onGround = true;
 	};
 }

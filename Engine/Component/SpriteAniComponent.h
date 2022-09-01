@@ -1,5 +1,6 @@
 #pragma once
 #include "Component/RenderComponent.h"
+#include <map>
 
 namespace wrap
 {
@@ -8,6 +9,23 @@ namespace wrap
 	class SpriteAniComponent : public RenderComponent
 	{
 	public:
+
+		struct Sequence
+		{
+			std::string name;
+
+			float fps = 12;
+			int num_columns = 0;
+			int num_rows = 0;
+
+			int start_frame = 0;
+			int end_frame = 0;
+
+			bool loop = true;
+
+			std::shared_ptr<Texture> texture;
+		};
+
 		virtual void Update() override;
 		virtual void Draw(Renderer& renderer) override;
 
@@ -19,19 +37,12 @@ namespace wrap
 		virtual bool Read(const rapidjson::Value& value) override;
 
 		Rect& GetSource() override;
+		virtual void SetSequence(const std::string& name);
 
-		// json animation values
-		float fps = 0.0f;
-		int num_colums = 0;
-		int num_rows = 0;
-
-		int start_frame = 0;
-		int end_frame = 0;
-		
 		int frame = 0;
 		float frameTimer = 0;
 
-		std::shared_ptr<Texture> m_texture;
-
+		std::map<std::string, Sequence> m_sequences;
+		Sequence* m_sequence = nullptr;
 	};
 }
